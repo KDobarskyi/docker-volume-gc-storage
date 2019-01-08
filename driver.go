@@ -129,7 +129,7 @@ func (d *gcpVolDriver) Mount(r volume.Request) volume.Response {
 	}
 	// mount a GC Storage bucket using gcsfuse on the host mountpoint
 	if err := d.mountGcsfuse(r.Name); err != nil {
-		return volume.Response{Err: err.Error()}
+		log.Printf("mountGcfuse on '%s' failed with '%v'\n", r.Name, err.Error())
 	}
 	return volume.Response{
 		Mountpoint: d.getMountpoint(r.Name),
