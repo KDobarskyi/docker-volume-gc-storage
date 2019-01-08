@@ -29,11 +29,11 @@ func (d *gcpVolDriver) unmountGcsfuse(volumeName string) error {
 	bucketName := d.getGCPBucketName(volumeName)
 	// unmount the GCS bucket
 	log.Printf("Unmounting host mountpoint '%s' from Google Cloud Storage Bucket '%s'\n", m, bucketName)
-	log.Printf("Running: $ fusermount -u %s\n", m)
+	log.Printf("NOT Running: $ fusermount -u %s\n", m)
 	// TODO: uncomment to let driver unmount back again
 	// cmd := exec.Command("fusermount", "-u", m)
-	if err := cmd.Run(); err != nil {
-		return err
-	}
+	//if err := cmd.Run(); err != nil {
+	//	return err
+	//}
 	return nil
 }
